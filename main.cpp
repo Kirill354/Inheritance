@@ -27,9 +27,9 @@ public:
 class Agent: public Employee{
 private:
     double wage;
-    double summury;
 public:
-    Agent(): wage{}, summury{} {}
+    double summury;
+    Agent(): wage{5000}, summury{} {}
 
     void PrintWage() override{
         cout << "Agent's wage = " << wage + 0.05*summury << endl;
@@ -56,14 +56,37 @@ public:
 int main(){
 
     Employee *mas = new Employee[9];
+    for (int i = 0; i < 9; i++){
+        if (i >= 0 && i <=2){
+            Manager *a = new Manager[i];
+        }
+        else if (i >= 3 && i <= 5){
+            cout << " input Agent's summury: ";
+            Agent *a = new Agent[i];
+            cin >> a->summury;
+        }
+        else{
+            cout << " input Worker's hours: ";
+            Worker *a = new Worker[i];
+            cin >> a->hour;
+        }
+    }
+
+    for (int i = 0; i < 9; i++){
+        mas[i].PrintWage();
+        cout << '\n';
+    }
+
+    /*
     Manager a;
-    a.PrintWage();
     Worker b;
+    Agent c;
+    c.summury = 70000;
+    c.PrintWage();
+    a.PrintWage();
     b.hour = 44;
     b.PrintWage();
-    
-
-
+    */
 
     delete [] mas;
     return 0;
