@@ -7,6 +7,10 @@ class Employee {
 private:
     double wage;
 public:
+    virtual void SetWage(int a) {
+        wage = a;
+    }
+
     virtual void PrintWage(){
         cout << " Employee's wage " << endl;
     }
@@ -26,26 +30,30 @@ public:
 
 class Agent: public Employee{
 private:
-    double wage;
+    double m_summury;
 public:
-    double summury;
-    Agent(): wage{5000}, summury{} {}
+    Agent(int summury = 0): m_summury(summury) {}
 
+    void SetWage(int summury) override{
+        m_summury = summury;
+    }
     void PrintWage() override{
-        cout << "Agent's wage = " << wage + 0.05*summury << endl;
+        cout << "Agent's wage = " << 5000 + 0.05*m_summury << endl;
     }
 
 };
 
 class Worker: public Employee{
 private:
-    double wage;
+    int m_hour;
 public:
-    int hour;
-    Worker(): hour{} {}
+    Worker(int hour = 0): m_hour(hour) {}
 
+    void SetWage(int hour) override{
+        m_hour = hour;
+    }
     void PrintWage() override{
-        cout << "Worker's wage = " << hour*100 << endl;
+        cout << "Worker's wage = " << m_hour*100 << endl;
     }
 
 };
@@ -54,7 +62,7 @@ public:
 
 
 int main(){
-
+    
     Employee *mas = new Employee[9];
     for (int i = 0; i < 9; i++){
         if (i >= 0 && i <=2){
@@ -62,13 +70,15 @@ int main(){
         }
         else if (i >= 3 && i <= 5){
             cout << " input Agent's summury: ";
+            int x; cin >> x;
             Agent *a = new Agent[i];
-            cin >> a->summury;
+            a->SetWage(x);
         }
         else{
             cout << " input Worker's hours: ";
-            Worker *a = new Worker[i];
-            cin >> a->hour;
+            int x; cin >> x;
+            Worker *b = new Worker[i];
+            b->SetWage(x);
         }
     }
 
@@ -76,18 +86,15 @@ int main(){
         mas[i].PrintWage();
         cout << '\n';
     }
-
+    
     /*
-    Manager a;
-    Worker b;
-    Agent c;
-    c.summury = 70000;
+    Manager c;
     c.PrintWage();
+    Agent a(80000);
     a.PrintWage();
-    b.hour = 44;
+    Worker b(80);
     b.PrintWage();
     */
-
     delete [] mas;
     return 0;
 }
