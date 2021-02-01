@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -56,39 +57,51 @@ public:
 int main(){
     
     /*
-    Employee *mas = new Employee[9];
+    Employee **mas = new Employee*[9];
     for (int i = 0; i < 9; i++){
         if (i >= 0 && i <=2){
-            mas[i] = Manager;
+            mas[i] = new Manager;
         }
         else if (i >= 3 && i <= 5){
             cout << " input Agent's summury: ";
             int x; cin >> x;
-            Agent *a = new Agent[i];
-            a->GetWage();
+            mas[i]= new Agent[x];
         }
         else{
             cout << " input Worker's hours: ";
             int x; cin >> x;
-            Worker *b = new Worker[i];
-            b->GetWage();
+            mas[i] = new Worker[x];
         }
     }
 
     for (int i = 0; i < 9; i++){
-        mas[i].GetWage();
+        (*mas[i]).GetWage();
         cout << '\n';
     }
     */
 
+    vector <Employee*> vect;
+    for (int i = 0; i < 9; i++){
+        if (i >= 0 && i <=2){
+            vect[i] = new Manager;
+        }
+        else if (i >= 3 && i <= 5){
+            cout << " input Agent's summury: ";
+            int x; cin >> x;
+            vect[i]= new Agent[x];
+        }
+        else{
+            cout << " input Worker's hours: ";
+            int x; cin >> x;
+            vect[i] = new Worker[x];
+        }
+    }
+
+    for (int i = 0; i < 9; i++){
+        (*vect[i]).GetWage();
+        cout << '\n';
+    }
     
-    Manager c;
-    c.GetWage();
-    Agent a(80000);
-    a.GetWage();
-    Worker b(80);
-    b.GetWage();
-    
-    //delete [] mas;
+    //delete [] *mas;
     return 0;
 }
