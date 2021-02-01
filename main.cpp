@@ -55,9 +55,10 @@ public:
 
 
 int main(){
-    
+
     /*
     Employee **mas = new Employee*[9];
+
     for (int i = 0; i < 9; i++){
         if (i >= 0 && i <=2){
             mas[i] = new Manager;
@@ -69,37 +70,41 @@ int main(){
         }
         else{
             cout << " input Worker's hours: ";
-            int x; cin >> x;`
+            int x; cin >> x;
             mas[i] = new Worker[x];
         }
     }
 
     for (int i = 0; i < 9; i++){
-        (*mas[i]).GetWage();
+        mas[i]->GetWage();
         cout << '\n';
     }
     */
+    
     vector <Employee*> vect;
     for (int i = 0; i < 9; i++){
         if (i >= 0 && i <=2){
-            vect[i] = new Manager;
+            vect.push_back(new Manager);
         }
         else if (i >= 3 && i <= 5){
             cout << " input Agent's summury: ";
-            int x; cin >> x;
-            vect[i]= new Agent(x);
+            int x; 
+            cin >> x;
+            vect.push_back(new Agent(x));
         }
         else{
             cout << " input Worker's hours: ";
-            int x; cin >> x;
-            vect[i] = new Worker(x);
+            int x;
+            cin >> x;
+            vect.push_back(new Worker(x));
         }
     }
 
     for (int i = 0; i < 9; i++){
-        (*vect[i]).GetWage();
+        vect[i]->GetWage();
         cout << '\n';
     }
+    
 
     //delete [] *mas;
     return 0;
