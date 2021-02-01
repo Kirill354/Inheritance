@@ -69,7 +69,7 @@ int main(){
         }
         else{
             cout << " input Worker's hours: ";
-            int x; cin >> x;
+            int x; cin >> x;`
             mas[i] = new Worker[x];
         }
     }
@@ -79,7 +79,6 @@ int main(){
         cout << '\n';
     }
     */
-
     vector <Employee*> vect;
     for (int i = 0; i < 9; i++){
         if (i >= 0 && i <=2){
@@ -88,12 +87,12 @@ int main(){
         else if (i >= 3 && i <= 5){
             cout << " input Agent's summury: ";
             int x; cin >> x;
-            vect[i]= new Agent[x];
+            vect[i]= new Agent(x);
         }
         else{
             cout << " input Worker's hours: ";
             int x; cin >> x;
-            vect[i] = new Worker[x];
+            vect[i] = new Worker(x);
         }
     }
 
@@ -101,7 +100,7 @@ int main(){
         (*vect[i]).GetWage();
         cout << '\n';
     }
-    
+
     //delete [] *mas;
     return 0;
 }
