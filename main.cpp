@@ -56,7 +56,7 @@ public:
 
 int main(){
 
-    /*
+    
     Employee **mas = new Employee*[9];
 
     for (int i = 0; i < 9; i++){
@@ -66,12 +66,12 @@ int main(){
         else if (i >= 3 && i <= 5){
             cout << " input Agent's summury: ";
             int x; cin >> x;
-            mas[i]= new Agent[x];
+            mas[i]= new Agent(x);
         }
         else{
             cout << " input Worker's hours: ";
             int x; cin >> x;
-            mas[i] = new Worker[x];
+            mas[i] = new Worker(x);
         }
     }
 
@@ -79,8 +79,8 @@ int main(){
         mas[i]->GetWage();
         cout << '\n';
     }
-    */
     
+    /*
     vector <Employee*> vect;
     for (int i = 0; i < 9; i++){
         if (i >= 0 && i <=2){
@@ -105,7 +105,7 @@ int main(){
         cout << '\n';
     }
     
-
-    //delete [] *mas;
+    */
+    delete [] *mas;
     return 0;
 }
